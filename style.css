@@ -15,10 +15,15 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 260px;
+  width: 80px;
   height: 100%;
   background: purple;
   padding: 6px 14px;
+  transition: .5s;
+}
+
+.sidebar.active {
+  width: 260px;
 }
 
 .sidebar .logo-menu {
@@ -32,6 +37,12 @@ body {
   font-size: 25px;
   color: #fff;
   pointer-events: none;
+  opacity: 0;
+}
+
+.sidebar.active .logo-menu .logo {
+  opacity: 1;
+  transition-delay: .2s;
 }
 
 .sidebar .logo-menu .toggle-btn {
