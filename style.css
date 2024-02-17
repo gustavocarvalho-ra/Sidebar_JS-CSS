@@ -8,7 +8,10 @@
 }
 
 body {
-  background: seagreen;
+  min-height: 100vh;
+  background: url('back.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .sidebar {
@@ -17,7 +20,10 @@ body {
   left: 0;
   width: 80px;
   height: 100%;
-  background: purple;
+  background: transparent;
+  backdrop-filter: blur(15px);
+  border-right: 2px solid rgba(255, 255, 255, .2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
   padding: 6px 14px;
   transition: .5s;
 }
@@ -38,6 +44,7 @@ body {
   color: #fff;
   pointer-events: none;
   opacity: 0;
+  transition: .3s;
 }
 
 .sidebar.active .logo-menu .logo {
@@ -47,7 +54,7 @@ body {
 
 .sidebar .logo-menu .toggle-btn {
   position: absolute;
-  left: 90%;
+  left: 50%;
   transform: translateX(-50%);
   width: 40px;
   height: 40px;
@@ -56,6 +63,11 @@ body {
   text-align: center;
   line-height: 40px;
   cursor: pointer;
+  transition: .5s;
+}
+
+.sidebar.active .logo-menu .toggle-btn {
+  left: 90%;
 }
 
 .sidebar .list {
@@ -77,6 +89,7 @@ body {
   color: #fff;
   text-decoration: none;
   border-radius: 6px;
+  white-space: nowrap;
   transition: .5s;
 }
 
@@ -85,9 +98,21 @@ body {
   background: rgba(255, 255, 255, .2);
 }
 
-  .lista .lista-item a i {
-    min-width: 50px;
-    height: 50px;
-    text-align: center;
-    line-height: 50px;
-  }
+.lista .lista-item a i {
+  min-width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+}
+
+.sidebar .link-name {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s;
+}
+
+.sidebar.active .link-name {
+  opacity: 1;
+  pointer-events: auto;
+  transition-delay: calc(.1s * var(--i));
+}
